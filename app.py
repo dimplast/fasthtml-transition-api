@@ -75,7 +75,7 @@ def card(user):
     Div(
         H3(user['name'], cls='text-xl font-semibold mb-2',  style=f"view-transition-name: name-{user['id']}"),
         P(user['position'], cls='text-sm text-gray-500 mb-4', style=f"view-transition-name: position-{user['id']}"),
-        P(user['details'], cls='text-gray-700 transition duration-300 ease-in opacity-100 slide-in'),
+        P(user['details'], cls='text-gray-700 transition duration-300 ease-in opacity-100 fade-in'),
         cls='p-4'
     ),
     Button('Back',
