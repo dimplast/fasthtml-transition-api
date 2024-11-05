@@ -37,7 +37,7 @@ hdrs = (
         .fade-in {
             animation: fadeIn 1.5s ease-out;
         }
-
+	
         @keyframes fadeIn {
         from {            
             opacity: 0;
@@ -51,7 +51,6 @@ hdrs = (
 
 app, rt = fast_app(live=True, pico=False, hdrs=hdrs)
 
-
 def item(user):
     return Li(
         Img(src=user['img'], alt='User Avatar', cls='w-12 h-12 rounded-full mr-4', style=f"view-transition-name: img-{user['id']}"),
@@ -63,9 +62,6 @@ def item(user):
         hx_get=f"/get_user/{user['id']}",
         hx_target="#list",
         hx_swap='innerHTML transition:true',
-          
-      
-        
         cls='flex items-center bg-white shadow-md p-4 rounded-lg cursor-pointer'
     )
 
@@ -82,14 +78,12 @@ def card(user):
         hx_get='/', hx_target="#list", hx_swap="innerHTML transition:true",
         cls='flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition duration-300 ease-in-out'
         ),
-    cls='flex flex-col items-center'
+    	cls='flex flex-col items-center'
 )
-
 
 def list_of_users(users):
     return Ul(*[item(user) for user in users],id="list", cls='space-y-4')       
-   
-
+ 
 @rt('/')
 def main():
         return Div(
@@ -101,7 +95,6 @@ def main():
 def get(id:str):
     user = next((user for user in users if user['id'] == id), None)
     return card(user)
-
 
 serve()
 
